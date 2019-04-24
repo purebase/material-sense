@@ -4,6 +4,9 @@ import './App.css';
 import Routes from './routes'
 import { blue, indigo } from '@material-ui/core/colors'
 
+import { Provider } from "mobx-react";
+import UiStore from "./stores/UiStore";
+
 const theme = createMuiTheme({
   palette: {
     secondary: {
@@ -28,7 +31,9 @@ class App extends Component {
     return (
       <div>
         <MuiThemeProvider theme={theme}>
-          <Routes />
+            <Provider UiStore={UiStore}>
+              <Routes />
+            </Provider>
         </MuiThemeProvider>
       </div>
     );

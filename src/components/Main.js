@@ -8,6 +8,7 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import InstructionDialog from './dialogs/InstructionDialog';
 import SwipeDialog from './dialogs/SwipeDialog';
+import { inject, observer } from "mobx-react";
 
 import Topbar from './Topbar';
 
@@ -90,6 +91,8 @@ const styles = theme => ({
   }
 });
 
+@inject("UiStore")
+@observer
 class Main extends Component {
 
   state = {
@@ -116,6 +119,7 @@ class Main extends Component {
   }
 
   render() {
+    const { UiStore } = this.props;
     const { classes } = this.props;
     return (
       <React.Fragment>
@@ -128,10 +132,10 @@ class Main extends Component {
                 <Paper className={classes.paper}>
                   <div className={classes.box}>
                     <Typography style={{textTransform: 'uppercase'}} color='secondary' gutterBottom>
-                      First title
+                      MobX Test!
                     </Typography>
                     <Typography variant="body2" gutterBottom>
-                      A first title style <br/> with two lines
+                      day or night: {UiStore.theme}
                     </Typography>
                   </div>
                   <div style={{display: 'flex', justifyContent: 'flex-end'}}>
